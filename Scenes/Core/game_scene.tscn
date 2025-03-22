@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0id3rq4dfqau"]
+
+[ext_resource type="PackedScene" uid="uid://cmatws887gxro" path="res://Scenes/Maps/map_1.tscn" id="1_lpx03"]
+[ext_resource type="Texture2D" uid="uid://bqp57efguw8st" path="res://Assets/UI/Buttons/Button blue/button_square_default.png" id="2_asmce"]
+[ext_resource type="Texture2D" uid="uid://cxp1fyi2u181v" path="res://Assets/Towers/towerDefense_tile249.png" id="3_fcski"]
+[ext_resource type="Texture2D" uid="uid://bxex4a721ihlf" path="res://Assets/Towers/towerDefense_tile251.png" id="4_b5vvk"]
+
+[node name="GameScene" type="Node"]
+
+[node name="Map 1" parent="." instance=ExtResource("1_lpx03")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TowerBar" type="VBoxContainer" parent="UI/HUD/MarginContainer"]
+custom_minimum_size = Vector2(100, 400)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 24
+alignment = 2
+
+[node name="Tower1" type="TextureButton" parent="UI/HUD/MarginContainer/TowerBar"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_asmce")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/MarginContainer/TowerBar/Tower1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/MarginContainer/TowerBar/Tower1/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_fcski")
+
+[node name="Missile1" type="TextureButton" parent="UI/HUD/MarginContainer/TowerBar"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_asmce")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/MarginContainer/TowerBar/Missile1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="UI/HUD/MarginContainer/TowerBar/Missile1/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_b5vvk")
