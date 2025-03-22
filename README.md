@@ -1,7 +1,7 @@
 # Tank Towers
 
 
-This is my second attempt to do a Tower defense
+This is my second attempt to do a Tower defense with a 2D top-down style.
 
 Using:
 - https://kenney.nl/assets
