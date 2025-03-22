@@ -35,6 +35,13 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
+[node name="Label" type="Label" parent="Margin"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_u7lva")
+theme_override_font_sizes/font_size = 80
+text = "Tank Towers"
+uppercase = true
+
 [node name="VB" type="VBoxContainer" parent="Margin"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
