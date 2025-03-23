@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ousovmjl05vx"]
+[gd_scene load_steps=6 format=3 uid="uid://ousovmjl05vx"]
 
-[ext_resource type="Script" uid="uid://c854jxmqvic6d" path="res://Scenes/Towers/missile_lvl_1.gd" id="1_odsph"]
+[ext_resource type="Script" uid="uid://c854jxmqvic6d" path="res://Scripts/Towers/missile_lvl_1.gd" id="1_odsph"]
 [ext_resource type="Texture2D" uid="uid://bco5vbxk7eqby" path="res://Assets/Towers/towerDefense_tile182.png" id="1_rd0xh"]
 [ext_resource type="Texture2D" uid="uid://ftgsygr8kpjq" path="res://Assets/Towers/towerDefense_tile229.png" id="2_rd0xh"]
 [ext_resource type="Texture2D" uid="uid://bxex4a721ihlf" path="res://Assets/Towers/towerDefense_tile251.png" id="3_p5g25"]
 
-[node name="MissileLvl1" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_odsph"]
+
+[node name="missile_lvl_1" type="Node2D"]
 script = ExtResource("1_odsph")
 
 [node name="Base" type="Sprite2D" parent="."]
@@ -19,3 +21,11 @@ offset = Vector2(4, 0)
 [node name="Missile" type="Sprite2D" parent="Turret"]
 texture = ExtResource("3_p5g25")
 offset = Vector2(8, 0)
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_odsph")
+
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

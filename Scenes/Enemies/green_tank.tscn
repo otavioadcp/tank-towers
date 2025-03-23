@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://k8deids0ppo0"]
+
+[ext_resource type="Texture2D" uid="uid://hyd5gjlmiv52" path="res://Assets/Enemies/tank_green.png" id="1_2akvs"]
+[ext_resource type="Script" uid="uid://triyejsmdb46" path="res://Scripts/Enemies/green_tank.gd" id="1_ti4ad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2akvs"]
+size = Vector2(33, 32)
+
+[node name="GreenTank" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_ti4ad")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="TankGreen" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_2akvs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_2akvs")

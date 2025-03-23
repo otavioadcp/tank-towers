@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0id3rq4dfqau"]
+[gd_scene load_steps=10 format=3 uid="uid://d0id3rq4dfqau"]
 
 [ext_resource type="Script" uid="uid://dje28wtexbvqt" path="res://Scripts/Core/game_scene.gd" id="1_fo06l"]
 [ext_resource type="PackedScene" uid="uid://cmatws887gxro" path="res://Scenes/Maps/map_1.tscn" id="1_lpx03"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cxp1fyi2u181v" path="res://Assets/Towers/towerDefense_tile249.png" id="3_fcski"]
 [ext_resource type="Script" uid="uid://do48od8amsbhh" path="res://Scripts/UI/ui.gd" id="3_ows5f"]
 [ext_resource type="Texture2D" uid="uid://bxex4a721ihlf" path="res://Assets/Towers/towerDefense_tile251.png" id="4_b5vvk"]
+[ext_resource type="Texture2D" uid="uid://crlksd4gqwf6l" path="res://Assets/Icons/forward.png" id="7_jfhvq"]
+[ext_resource type="Texture2D" uid="uid://dsox3w32ee6ct" path="res://Assets/Icons/pause.png" id="8_0u0fg"]
+[ext_resource type="Texture2D" uid="uid://divjm13mvhkhj" path="res://Assets/Icons/fastForward.png" id="9_5bo68"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_fo06l")
@@ -45,7 +48,7 @@ size_flags_vertical = 8
 theme_override_constants/separation = 24
 alignment = 2
 
-[node name="Tower" type="TextureButton" parent="UI/HUD/MarginContainer/TowerBar" groups=["build_buttons"]]
+[node name="Turret" type="TextureButton" parent="UI/HUD/MarginContainer/TowerBar" groups=["build_buttons"]]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -53,7 +56,7 @@ size_flags_vertical = 4
 texture_normal = ExtResource("2_asmce")
 stretch_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/MarginContainer/TowerBar/Tower"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/MarginContainer/TowerBar/Turret"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,7 +68,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Icon" type="TextureRect" parent="UI/HUD/MarginContainer/TowerBar/Tower/MarginContainer"]
+[node name="Icon" type="TextureRect" parent="UI/HUD/MarginContainer/TowerBar/Turret/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("3_fcski")
 
@@ -88,3 +91,25 @@ grow_vertical = 2
 [node name="Icon" type="TextureRect" parent="UI/HUD/MarginContainer/TowerBar/Missile/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("4_b5vvk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="PlayPause" type="TextureButton" parent="UI/HUD/MarginContainer/HBoxContainer"]
+process_mode = 3
+physics_interpolation_mode = 1
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("7_jfhvq")
+texture_pressed = ExtResource("8_0u0fg")
+
+[node name="FastFoward" type="TextureButton" parent="UI/HUD/MarginContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+texture_normal = ExtResource("9_5bo68")
+
+[connection signal="pressed" from="UI/HUD/MarginContainer/HBoxContainer/PlayPause" to="UI" method="_on_play_pause_pressed"]
+[connection signal="pressed" from="UI/HUD/MarginContainer/HBoxContainer/FastFoward" to="UI" method="_on_fast_foward_pressed"]
